@@ -1,0 +1,11 @@
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\bin\Debug\netcoreapp2.0\MigrationWithMySql.deps.json
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\bin\Debug\netcoreapp2.0\MigrationWithMySql.runtimeconfig.json
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\bin\Debug\netcoreapp2.0\MigrationWithMySql.runtimeconfig.dev.json
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\bin\Debug\netcoreapp2.0\MigrationWithMySql.dll
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\bin\Debug\netcoreapp2.0\MigrationWithMySql.pdb
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.csprojAssemblyReference.cache
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.csproj.CoreCompileInputs.cache
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.AssemblyInfoInputs.cache
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.AssemblyInfo.cs
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.dll
+C:\Users\sacak\OneDrive\Belgeler\Visual Studio 2017\Projects\MigrationWithMySql\MigrationWithMySql\obj\Debug\netcoreapp2.0\MigrationWithMySql.pdb
