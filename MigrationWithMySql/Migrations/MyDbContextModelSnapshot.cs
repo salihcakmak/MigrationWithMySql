@@ -16,7 +16,7 @@ namespace MigrationWithMySql.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.AddressType", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.AddressType", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -50,7 +50,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("AddressType");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Company", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Company", b =>
                 {
                     b.Property<long>("CompanyID")
                         .ValueGeneratedOnAdd();
@@ -78,7 +78,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Order", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Order", b =>
                 {
                     b.Property<long>("OrderID")
                         .ValueGeneratedOnAdd();
@@ -108,7 +108,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.OrderDetail", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.OrderDetail", b =>
                 {
                     b.Property<long>("OrderID");
 
@@ -125,7 +125,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("Order Details");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.PersonContact", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.PersonContact", b =>
                 {
                     b.Property<long>("ContactID")
                         .ValueGeneratedOnAdd();
@@ -161,7 +161,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("Person Contact");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Product", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Product", b =>
                 {
                     b.Property<long>("ProductID")
                         .ValueGeneratedOnAdd();
@@ -189,7 +189,7 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.ProductCategory", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.ProductCategory", b =>
                 {
                     b.Property<long>("CategoryID")
                         .ValueGeneratedOnAdd();
@@ -207,66 +207,66 @@ namespace MigrationWithMySql.Migrations
                     b.ToTable("ProductCategory");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Company", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Company", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.AddressType", "Address")
+                    b.HasOne("MigrationWithMySql.Models.AddressType", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("AspNetCORE_Migrations.Models.PersonContact", "PrimaryContact")
+                    b.HasOne("MigrationWithMySql.Models.PersonContact", "PrimaryContact")
                         .WithMany("Companies")
                         .HasForeignKey("PrimaryContactContactID");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Order", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Order", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.Company", "Company")
+                    b.HasOne("MigrationWithMySql.Models.Company", "Company")
                         .WithMany("Orders")
                         .HasForeignKey("CompanyID");
 
-                    b.HasOne("AspNetCORE_Migrations.Models.PersonContact", "PersonContact")
+                    b.HasOne("MigrationWithMySql.Models.PersonContact", "PersonContact")
                         .WithMany("Orders")
                         .HasForeignKey("PersonContactContactID");
 
-                    b.HasOne("AspNetCORE_Migrations.Models.Company", "ShipCompany")
+                    b.HasOne("MigrationWithMySql.Models.Company", "ShipCompany")
                         .WithMany("ShippedOrders")
                         .HasForeignKey("ShipCompanyCompanyID");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.OrderDetail", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.OrderDetail", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.Order", "Order")
+                    b.HasOne("MigrationWithMySql.Models.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AspNetCORE_Migrations.Models.Product", "Product")
+                    b.HasOne("MigrationWithMySql.Models.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.PersonContact", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.PersonContact", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.AddressType", "Address")
+                    b.HasOne("MigrationWithMySql.Models.AddressType", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("AspNetCORE_Migrations.Models.Company", "Company")
+                    b.HasOne("MigrationWithMySql.Models.Company", "Company")
                         .WithMany("Contacts")
                         .HasForeignKey("CompanyID");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.Product", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.Product", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.ProductCategory", "Category")
+                    b.HasOne("MigrationWithMySql.Models.ProductCategory", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID");
                 });
 
-            modelBuilder.Entity("AspNetCORE_Migrations.Models.ProductCategory", b =>
+            modelBuilder.Entity("MigrationWithMySql.Models.ProductCategory", b =>
                 {
-                    b.HasOne("AspNetCORE_Migrations.Models.ProductCategory", "ParentCategory")
+                    b.HasOne("MigrationWithMySql.Models.ProductCategory", "ParentCategory")
                         .WithMany("ChieldCategories")
                         .HasForeignKey("ParentCategoryCategoryID");
                 });

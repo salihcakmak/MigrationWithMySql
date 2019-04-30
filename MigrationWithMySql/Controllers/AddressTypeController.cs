@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MigrationWithMySql.DAL;
+using MigrationWithMySql.DAL.UnitOfWork;
 using MigrationWithMySql.Models;
 
 namespace MigrationWithMySql.Controllers
@@ -17,7 +18,12 @@ namespace MigrationWithMySql.Controllers
         }
         public IActionResult Index()
         {
-            return View(_myDbContext.AddressTypes);
+            List<AddressType> list = new List<AddressType>();
+            using (UnitOfWork uow = new UnitOfWork ())
+            {
+               list = uow.GetRepository<AddressType>().GetAll().ToList();
+            }
+            return View(list);
         }
         public IActionResult Create()
         {
@@ -28,8 +34,11 @@ namespace MigrationWithMySql.Controllers
         {
             if (ModelState.IsValid)
             {
-                _myDbContext.AddressTypes.Add(addressType);
-                _myDbContext.SaveChanges();
+                using (UnitOfWork uow =new UnitOfWork ())
+                {
+                    uow.GetRepository<AddressType>().Add(addressType);
+                    uow.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             else
@@ -40,28 +49,39 @@ namespace MigrationWithMySql.Controllers
         
         public IActionResult Delete(long id)
         {
-            var addressType = _myDbContext.AddressTypes.FirstOrDefault(m=>m.Id==id);
-            return View(addressType);
-            
+            using (UnitOfWork uow =new UnitOfWork())
+            {
+                var addressType = uow.GetRepository<AddressType>().Get(x => x.Id == id);
+                return View(addressType);
+            }            
         }
         [HttpPost,ActionName("Delete")]
         public IActionResult DeleteConfirmed(long id)
         {
-            var addressType = _myDbContext.AddressTypes.Find(id);
-            _myDbContext.AddressTypes.Remove(addressType);
-            _myDbContext.SaveChanges();
+            using (UnitOfWork uow = new UnitOfWork ())
+            {
+                AddressType address = uow.GetRepository<AddressType>().Get(x => x.Id == id);
+                uow.GetRepository<AddressType>().Delete(address);
+                uow.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
         public IActionResult Edit(long id)
         {
-            AddressType addressType = _myDbContext.AddressTypes.Find(id);
-            return View(addressType);
+            using (UnitOfWork uow = new UnitOfWork ())
+            {
+                AddressType address = uow.GetRepository<AddressType>().Get(x => x.Id == id);
+                return View(address);
+            }
         }
         [HttpPost]
         public IActionResult Edit(long id ,AddressType addressType)
         {
-            _myDbContext.Update(addressType);
-            _myDbContext.SaveChanges();
+            using (UnitOfWork uow =new UnitOfWork ())
+            {
+                uow.GetRepository<AddressType>().Update(addressType);
+                uow.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
     }
